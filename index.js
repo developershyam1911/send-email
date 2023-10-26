@@ -21,8 +21,8 @@ app.post('/send-email', async (req, res) => {
         port: 465,
         secure: true,
         auth: {
-            user: 'support@eventplanet.in',
-            pass: 'Event@123'
+            user: 'support@itgenixsoftechsolutions.com',
+            pass: 'Hosting@2233'
         }
     });
 
