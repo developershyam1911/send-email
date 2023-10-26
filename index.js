@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     })
 })
 app.post('/send-email', async (req, res) => {
-    const { sender_email,receiver_email,subject } = req.body
+    const { name,sender_email,receiver_email,subject,msg } = req.body
     const transporter = nodemailer.createTransport({
         host: "smtp.hostinger.com",
         port: 465,
@@ -27,11 +27,11 @@ app.post('/send-email', async (req, res) => {
     });
 
     const info = await transporter.sendMail({
-        from: `'Testing' ${sender_email}`, // sender address
+        from: `${name} ${sender_email}`, // sender address
         to: receiver_email, // list of receivers
         subject:subject, // Subject line
         // text: "New Enquiry received. Login to connect", // plain text body
-        html: '<h1>Hello world</h1>'
+        html: msg
     });
     res.send({status:'success'})
 })
