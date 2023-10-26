@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
         status: 'ok',
     })
 })
-app.get('/send-email', async (req, res) => {
+app.post('/send-email', async (req, res) => {
     const { name,sender_email,receiver_email,subject,msg } = req.body
     const transporter = nodemailer.createTransport({
         host: "smtp.hostinger.com",
