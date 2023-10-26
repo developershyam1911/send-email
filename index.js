@@ -14,8 +14,7 @@ app.get('/', (req, res) => {
         status: 'ok',
     })
 })
-app.post('/send-email', async (req, res) => {
-    const { name,sender_email,receiver_email,subject,msg } = req.body
+app.get('/send-email', async (req, res) => {
     const transporter = nodemailer.createTransport({
         host: "smtp.hostinger.com",
         port: 465,
@@ -27,13 +26,13 @@ app.post('/send-email', async (req, res) => {
     });
 
     const info = await transporter.sendMail({
-        from: `${name} ${sender_email}`, // sender address
-        to: receiver_email, // list of receivers
-        subject:subject, // Subject line
-        // text: "New Enquiry received. Login to connect", // plain text body
-        html: msg
+        from: '"Event Planet 👻"support@eventplanet.in', // sender address
+        to: "eventplanet.world@gmail.com", // list of receivers
+        subject: "New Enquiry ✔", // Subject line
+        text: "New Enquiry received. Login to connect", // plain text body
+        html: '<h3>New Enquiry Arrived</h3><p>You can login to admin panel to see this enquiry <a href="https://biz.eventplanet.in/">Click here to redirect</a></p>', // html body
     });
-    res.send({status:'success'})
+    res.send('Send successfully')
 })
 
 
